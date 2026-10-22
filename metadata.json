@@ -1,0 +1,8 @@
+{
+  "name": "Kalp Kalbe",
+  "description": "En yakınındaki kişileri haritada keşfet, ilgi alanlarına ve detaylı biyografiye göre eşleş, güvenli sohbet et, fotoğraf ve video paylaş.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "entities": {
+    "UserPrivate": {
+      "title": "UserPrivate",
+      "description": "Owner-isolated private user account record initialized upon registration containing PII and profile metadata.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The Firebase Auth UID of the user."
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "Private email address of the user."
+        },
+        "bio": {
+          "type": "string",
+          "description": "User biography initialized on registration."
+        },
+        "interests": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of user interest tags initialized on registration."
+        },
+        "geolocation": {
+          "type": "object",
+          "description": "Geographic coordinates (GeoPoint or latitude/longitude map) initialized on registration.",
+          "properties": {
+            "latitude": {
+              "type": "number"
+            },
+            "longitude": {
+              "type": "number"
+            }
+          }
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Latitude coordinate (-90 to 90)."
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Longitude coordinate (-180 to 180)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Account creation server timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last private record update server timestamp."
+        }
+      },
+      "required": [
+        "userId",
+        "name",
+        "email",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PublicProfile": {
+      "title": "PublicProfile",
+      "description": "Publicly discoverable dating profile document without PII.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The Firebase Auth UID owning this profile."
+        },
+        "name": {
+          "type": "string",
+          "description": "Public display name."
+        },
+        "age": {
+          "type": "integer",
+          "description": "User age in years (18-120)."
+        },
+        "city": {
+          "type": "string",
+          "description": "City name."
+        },
+        "bio": {
+          "type": "string",
+          "description": "Biography text."
+        },
+        "occupation": {
+          "type": "string",
+          "description": "Occupation title."
+        },
+        "education": {
+          "type": "string",
+          "description": "Education background."
+        },
+        "heightCm": {
+          "type": "integer",
+          "description": "Height in centimeters."
+        },
+        "zodiac": {
+          "type": "string",
+          "description": "Zodiac sign label."
+        },
+        "lookingFor": {
+          "type": "string",
+          "description": "Relationship goal."
+        },
+        "photosJson": {
+          "type": "string",
+          "description": "Serialized list of photo URLs."
+        },
+        "interestsJson": {
+          "type": "string",
+          "description": "Serialized list of interest tags."
+        },
+        "interests": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Structured list of interest tags."
+        },
+        "geolocation": {
+          "type": "object",
+          "description": "Geographic coordinates (GeoPoint or latitude/longitude map).",
+          "properties": {
+            "latitude": {
+              "type": "number"
+            },
+            "longitude": {
+              "type": "number"
+            }
+          }
+        },
+        "lifestyleJson": {
+          "type": "string",
+          "description": "Serialized list of lifestyle tags."
+        },
+        "promptQuestion": {
+          "type": "string",
+          "description": "Profile icebreaker prompt question."
+        },
+        "promptAnswer": {
+          "type": "string",
+          "description": "Profile icebreaker prompt answer."
+        },
+        "isVerified": {
+          "type": "boolean",
+          "description": "Whether the user completed selfie verification."
+        },
+        "isVip": {
+          "type": "boolean",
+          "description": "Whether the user has an active VIP subscription."
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Approximate latitude for distance calculation."
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Approximate longitude for distance calculation."
+        },
+        "isOnline": {
+          "type": "boolean",
+          "description": "Online presence indicator."
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "public",
+            "private"
+          ],
+          "description": "Access control visibility flag."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation server timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update server timestamp."
+        }
+      },
+      "required": [
+        "userId",
+        "name",
+        "age",
+        "city",
+        "bio",
+        "occupation",
+        "education",
+        "heightCm",
+        "zodiac",
+        "lookingFor",
+        "photosJson",
+        "interestsJson",
+        "lifestyleJson",
+        "promptQuestion",
+        "promptAnswer",
+        "isVerified",
+        "isVip",
+        "latitude",
+        "longitude",
+        "isOnline",
+        "visibility",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Moment": {
+      "title": "Moment",
+      "description": "Social feed post shared by users in Discover/Moments.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique moment ID."
+        },
+        "authorId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the author."
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Display name of the author."
+        },
+        "authorAvatar": {
+          "type": "string",
+          "description": "Avatar URL of the author."
+        },
+        "mediaUri": {
+          "type": "string",
+          "description": "Optional URL of the attached image or video."
+        },
+        "mediaType": {
+          "type": "string",
+          "enum": [
+            "IMAGE",
+            "VIDEO",
+            "NONE",
+            "TEXT"
+          ],
+          "description": "Media type."
+        },
+        "caption": {
+          "type": "string",
+          "description": "Moment text content."
+        },
+        "location": {
+          "type": "string",
+          "description": "Optional location label."
+        },
+        "likesCount": {
+          "type": "integer",
+          "description": "Total number of likes."
+        },
+        "likedUserIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of user UIDs who liked this post."
+        },
+        "commentsJson": {
+          "type": "string",
+          "description": "Serialized VIP comments."
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "public",
+            "private"
+          ],
+          "description": "Visibility of the moment."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation server timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update server timestamp."
+        }
+      },
+      "required": [
+        "id",
+        "authorId",
+        "authorName",
+        "authorAvatar",
+        "mediaUri",
+        "mediaType",
+        "caption",
+        "location",
+        "likesCount",
+        "visibility",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "UserLike": {
+      "title": "UserLike",
+      "description": "Directed like or super-like from one user to another.",
+      "type": "object",
+      "properties": {
+        "fromUid": {
+          "type": "string",
+          "description": "UID of the user sending the like."
+        },
+        "toUid": {
+          "type": "string",
+          "description": "UID of the user receiving the like."
+        },
+        "isSuperLike": {
+          "type": "boolean",
+          "description": "Whether this is a super-like."
+        },
+        "fromName": {
+          "type": "string",
+          "description": "Display name of the sender for 'Seni Beğenenler' display."
+        },
+        "fromAvatar": {
+          "type": "string",
+          "description": "Avatar photo URL of the sender."
+        },
+        "fromAge": {
+          "type": "integer",
+          "description": "Age of the sender."
+        },
+        "fromCity": {
+          "type": "string",
+          "description": "City of the sender."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation server timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Update server timestamp."
+        }
+      },
+      "required": [
+        "fromUid",
+        "toUid",
+        "isSuperLike",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Direct message between two matched users.",
+      "type": "object",
+      "properties": {
+        "channelId": {
+          "type": "string",
+          "description": "Deterministic conversation channel ID."
+        },
+        "senderId": {
+          "type": "string",
+          "description": "UID of the message sender."
+        },
+        "participantIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Two-element array of participating UIDs."
+        },
+        "text": {
+          "type": "string",
+          "description": "Message text content."
+        },
+        "mediaUri": {
+          "type": "string",
+          "description": "Optional attached media URL."
+        },
+        "mediaType": {
+          "type": "string",
+          "description": "Optional attached media type (IMAGE, VIDEO, AUDIO)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Message creation server timestamp."
+        }
+      },
+      "required": [
+        "channelId",
+        "senderId",
+        "participantIds",
+        "text",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserPrivate"
+      },
+      "description": "Owner-only private user account records containing email PII and initial registration profile data."
+    },
+    "/public_profiles/{userId}": {
+      "schema": {
+        "$ref": "#/entities/PublicProfile"
+      },
+      "description": "Public dating profiles readable by authenticated users."
+    },
+    "/moments/{momentId}": {
+      "schema": {
+        "$ref": "#/entities/Moment"
+      },
+      "description": "Public social moments feed with Firebase-persisted likes."
+    },
+    "/likes/{likeId}": {
+      "schema": {
+        "$ref": "#/entities/UserLike"
+      },
+      "description": "Directed user likes readable only by sender or recipient."
+    },
+    "/conversations/{channelId}/messages/{messageId}": {
+      "schema": {
+        "$ref": "#/entities/ChatMessage"
+      },
+      "description": "Direct chat messages readable and writable only by conversation participants."
+    }
+  }
+}
